@@ -3,7 +3,6 @@ import sys
 from xml.etree import ElementTree
 
 def get_podcast_rss_url():
-	print(sys.argv[1])
 	return sys.argv[1]
 
 def create_request(url):
