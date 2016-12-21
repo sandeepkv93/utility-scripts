@@ -14,9 +14,9 @@ def create_request(url):
 		return server_response
 
 def get_all_episode_elements_from_xml(xml_text):
-    xml = ElementTree.fromstring(xml_text)
-    items = xml.findall('channel/item')
-    return items
+	xml = ElementTree.fromstring(xml_text)
+	items = xml.findall('channel/item')
+    	return items
 
 def download(episode):
 	url = episode.find('enclosure').attrib.get('url')
@@ -28,15 +28,15 @@ def download(episode):
 			fout.write(chunk)
 
 def main():
-    rss_url = sys.argv[1]
-    server_response = create_request(rss_url)
-    xml_text = server_response.text
-    items = get_all_episode_elements_from_xml(xml_text)
-    print("Downloading {} episodes...".format(len(items)))
-    episode_count = 1
-    for item in items:
-    	download(item)
-    	print('Episode',episode_count,'Done.\n')
+    	rss_url = sys.argv[1]
+    	server_response = create_request(rss_url)
+    	xml_text = server_response.text
+    	items = get_all_episode_elements_from_xml(xml_text)
+    	print("Downloading {} episodes...".format(len(items)))
+    	episode_count = 1
+    	for item in items:
+    		download(item)
+    		print('Episode',episode_count,'Done.\n')
 
 if __name__ == '__main__':
-    main()
+    	main()
